@@ -6,9 +6,8 @@ class feedback(models.Model):
     created_at = models.DateTimeField('Время написания отзыва', auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ||      {self.email}"
 
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
-    

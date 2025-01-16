@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
 </head>
 <body>
+
+    {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
     <header class="header">
         <h1>Онлайн-метроном</h1>
     </header>
@@ -22,22 +31,27 @@
             <label for="tempo">Темп (BPM):</label>
             <input type="number" id="tempo" value="120">
             <button id="startStopButton">Старт</button>
-        </div>
-        <div id="beatDisplay" class="beat-display"></div>
-        <audio id="clickSound" src="{% static 'main/audio/click.wav' %}"></audio>
+            </div>
+            <div id="beatDisplay" class="beat-display"></div>
+            <audio id="clickSound" src="{% static 'main/audio/click.wav' %}"></audio>
         </section>
 
         <section class="feedback">
             <h2>Мы ценим ваши отзывы</h2>
-            <form id="feedback-form">
+            <form id="feedback-form" method="POST">
+                {% csrf_token %}
+
                 <label for="name">Имя:</label>
                 <input type="text" id="name" name="name" required>
+                {{ form.name }}
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
+                {{ form.email }}
 
                 <label for="feedback">Ваш отзыв:</label>
                 <textarea id="feedback" name="feedback" rows="5" required></textarea>
+                 {{ form.feedback_text }}
 
                 <button type="submit">Отправить отзыв</button>
             </form>
