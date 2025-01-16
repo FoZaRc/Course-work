@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metronome</title>
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>Онлайн-метроном</h1>
+    </header>
+
+    <main class="main-content">
+        <section class="metronome">
+            <h2>Контролируй свой темп</h2>
+            <div class="container">
+        <div class="controls">
+            <label for="timeSignature">Такты:</label>
+            <input type="text" id="timeSignature" value="7/8, 5/4">
+            <label for="tempo">Темп (BPM):</label>
+            <input type="number" id="tempo" value="120">
+            <button id="startStopButton">Старт</button>
+        </div>
+        <div id="beatDisplay" class="beat-display"></div>
+        <audio id="clickSound" src="{% static 'main/audio/click.wav' %}"></audio>
+        </section>
+
+        <section class="feedback">
+            <h2>Мы ценим ваши отзывы</h2>
+            <form id="feedback-form">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="feedback">Ваш отзыв:</label>
+                <textarea id="feedback" name="feedback" rows="5" required></textarea>
+
+                <button type="submit">Отправить отзыв</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="wraper_list_footer">
+            <ul class="footer_list">
+                <li class="item_footer">
+                    <span>Состав команды:</span>
+                    <p>Гайворонский Семён</p>
+                    <p>Иванилов Алексей</p>
+                </li>
+                <li class="item_footer">
+                    <span>Ссылка на GIT:</span>
+                    <p>*************</p>
+                </li>
+                <li class="item_footer">
+                    <span>Ссылка на скачивание презентации:</span>
+                    <p>*************</p>
+                </li>
+            </ul>
+            <p>&copy; 2025 Онлайн-метроном. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'main/js/script.js' %}"></script>
+
+</body>
+</html>
